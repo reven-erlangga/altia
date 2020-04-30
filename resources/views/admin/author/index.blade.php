@@ -12,7 +12,7 @@
         <table id="authors-table" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Nomor</th>
                     <th>Nama</th>
                 </tr>
             </thead>
@@ -29,7 +29,7 @@ $(function() {
         serverSide: true,
         ajax: 'author/data',
         columns: [
-            { data: 'id', name: 'id' },
+            { data: 'DT_RowIndex', orderable : false, searchable : false},
             { data: 'name', name: 'name' },
         ]
     });
