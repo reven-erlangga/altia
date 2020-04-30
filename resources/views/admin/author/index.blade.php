@@ -14,6 +14,7 @@
                 <tr>
                     <th>Nomor</th>
                     <th>Nama</th>
+                    <th>Action</th>
                 </tr>
             </thead>
         </table></div>
@@ -27,10 +28,11 @@ $(function() {
     $('#authors-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: 'author/data',
+        ajax: '{{ route('admin.author.data') }}',
         columns: [
             { data: 'DT_RowIndex', orderable : false, searchable : false},
             { data: 'name', name: 'name' },
+            { data: 'action', name: 'action'},
         ]
     });
 });
