@@ -10,7 +10,7 @@ use App\Author as author_model;
 class DataController extends Controller
 {
     public function authors() {
-        return datatables(author_model::all())->make(true);
+        return datatables(author_model::query())->toJson();
     }
 
 }

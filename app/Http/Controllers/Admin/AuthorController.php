@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DataTables;
 
+use App\Author as author_model;
+
 class AuthorController extends Controller
 {
     /**
@@ -25,7 +27,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.author.create');
     }
 
     /**
@@ -36,7 +38,9 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->name);
+        author_model::create($request->only('name'));
+        return redirect()->route('admin.author.index');
     }
 
     /**
