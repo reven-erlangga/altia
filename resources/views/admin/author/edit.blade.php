@@ -10,9 +10,12 @@
                 @csrf
                 @method('PUT')
 
-                <div class="form-group">
+                <div class="form-group @error('name') has-error @enderror">
                     <label for="">Nama</label>
-                    <input type="text" name="name" class="form-control" placeholder="Contoh : Syahranti Ainun" value="{{ $author->name }}">
+                    <input type="text" name="name" class="form-control" placeholder="Contoh : Syahranti Ainun" value="{{ old('name') ?? $author->name }}">
+                    @error('name')
+                    <span class="help-block">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-grou">
