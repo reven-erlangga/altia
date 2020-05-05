@@ -9,7 +9,6 @@
         </div>
     </div>
     <div class="box-body">
-        @include('admin.templates.partials.alert')
         <table id="authors-table" class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -31,6 +30,8 @@
 
 
 @push('scripts')
+<script src="{{ asset('assets/plugins/bs-notify.min.js') }}"></script>
+@include('admin.templates.partials.alert')
 <script>
 $(function() {
     $('#authors-table').DataTable({
