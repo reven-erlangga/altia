@@ -17,8 +17,15 @@
                     <th>Action</th>
                 </tr>
             </thead>
-        </table></div>
+        </table>
+    </div>
 </div>
+
+<form action="" method="POST" id="deleteForm">
+    @csrf
+    @method("DELETE")
+    <input type="submit" value="hapus" style="display: none">
+</form>
 @endsection
 
 
