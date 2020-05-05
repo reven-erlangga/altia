@@ -9,6 +9,7 @@
         </div>
     </div>
     <div class="box-body">
+        @include('admin.templates.partials.alert')
         <table id="authors-table" class="table table-bordered table-hover">
             <thead>
                 <tr>
