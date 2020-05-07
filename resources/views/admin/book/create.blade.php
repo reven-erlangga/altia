@@ -11,7 +11,7 @@
 
                 <div class="form-group @error('title') has-error @enderror">
                     <label for="">Judul Buku</label>
-                    <input type="text" name="title" class="form-control" placeholder="Contoh : Harry Potter" value="{{ old('name') }}">
+                    <input type="text" name="title" class="form-control" placeholder="Contoh : Harry Potter" value="{{ old('title') }}">
                     @error('title')
                     <span class="help-block">{{ $message }}</span>
                     @enderror

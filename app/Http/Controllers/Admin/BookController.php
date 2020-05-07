@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 use App\Author;
 use App\Book;
@@ -43,12 +45,11 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $this->validate($request, [
             'title' => 'required',
-            'description' => 'required|min:20',
+            'description' => 'required',
             'author_id' => 'required',
-			'cover' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+			'cover' => 'required|file|image',
             'qty' => 'required|numeric',
         ]);
 
@@ -86,9 +87,13 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        //
+        return view('admin.book.edit', [
+            'title' => 'Ubah data buku',
+            'book' => $book,
+            'authors' => Author::orderBy('name', 'ASC')->get()
+        ]);
     }
 
     /**
@@ -98,9 +103,34 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'author_id' => 'required',
+			// 'cover' => 'required|file|image',
+            'qty' => 'required|numeric',
+        ]);
+
+        $image_file = $book->cover;
+
+        if($request->hasFile('cover')) {
+            $delete = File::delete('assets/covers/'.$book->cover);
+            $cover = $request->file('cover');
+            $image_file = time()."_".$cover->getClientOriginalName();
+            $cover->move('assets/covers', $image_file);
+        }
+
+        $book->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'author_id' => $request->author_id,
+            'cover' => $image_file,
+            'qty' => $request->qty,
+        ]);
+
+        return redirect()->route('admin.book.index')->withSuccess('Data Buku Berhasil Diubah');
     }
 
     /**
