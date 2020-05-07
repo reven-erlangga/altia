@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('frontend.template.partials.head')
+<head>
+    @include('frontend.template.partials.head')
+</head>
 
 <body>
-        @include('frontend.template.partials.navigation')
-
+    @include('frontend.template.partials.navigation')
     <div class="container">
         @yield('content')
-        </div>
-
-
-
-@include('frontend.template.partials.script')
+    </div>
+    @include('frontend.template.partials.script')
 </body>
 
 </html>

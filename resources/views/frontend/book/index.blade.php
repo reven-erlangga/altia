@@ -4,7 +4,6 @@
 
 <h2>Koleksi Buku</h2>
 <blockquote>Koleksi buku yang dapat dipinjam</blockquote>
-<div class="row">
     @foreach ($books as $book)
     <div class="col s12 m6">
         <div class="card horizontal hoverable">
@@ -23,6 +22,7 @@
         </div>
     </div>
     @endforeach
-</div>
-{{ $books->render() }}
+<br>
+
+{{ $books->links('vendor.pagination.materialize') }}
 @endsection
