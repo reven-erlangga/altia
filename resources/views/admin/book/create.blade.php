@@ -39,7 +39,7 @@
 
                 <div class="form-group @error('cover') has-error @enderror">
                     <label for="">Sampul Buku</label>
-                    <input type="file" name="cover" class="form-control" >
+                    <input type="file" id="cover" name="cover" class="form-control" >
                     @error('cover')
                     <span class="help-block">{{ $message }}</span>
                     @enderror

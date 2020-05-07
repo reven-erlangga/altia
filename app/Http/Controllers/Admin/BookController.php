@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Author;
+use App\Book;
 
 class BookController extends Controller
 {
@@ -42,7 +43,30 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required|min:20',
+            'author_id' => 'required',
+			'cover' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+            'qty' => 'required|numeric',
+        ]);
+
+        if($request->hasFile('cover')) {
+            $cover = $request->file('cover');
+            $image_file = time()."_".$cover->getClientOriginalName();
+            $cover->move('assets/covers', $image_file);
+        }
+
+        Book::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'author_id' => $request->author_id,
+            'cover' => $image_file,
+            'qty' => $request->qty,
+        ]);
+
+        return redirect()->route('admin.book.index')->withSuccess('Data Buku Berhasil Ditambahkan');
     }
 
     /**
