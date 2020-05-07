@@ -5,7 +5,7 @@
     <div class="box-header">
         <h3 class="box-title">Data Penulis</h3>
         <div class="pull-right">
-            <a href="{{route('admin.author.create')}}" class="btn btn-primary">Tambah Penulis</a>
+            <a href="{{route('admin.book.create')}}" class="btn btn-primary">Tambah Buku</a>
         </div>
     </div>
     <div class="box-body">
