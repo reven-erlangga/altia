@@ -1,3 +1,4 @@
+<div class="navbar-fixed">
 
     <nav>
 
@@ -10,6 +11,7 @@
             </ul>
         </div>
     </nav>
+</div>
 
     <ul class="sidenav" id="mobile-demo">
         <li><a href="#">Login</a></li>

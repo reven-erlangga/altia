@@ -12,8 +12,6 @@
 
 
 
-    </div>
-
 @include('frontend.template.partials.script')
 </body>
 
