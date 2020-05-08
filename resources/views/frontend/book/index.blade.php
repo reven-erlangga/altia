@@ -19,7 +19,9 @@
                 <p>{{ Str::limit($book->description, 100) }}</p>
               </div>
               <div class="card-action">
-                <a href="#">Pinjam Buku</a>
+                  <form action="{{ route('book.borrow', $book) }}" method="POST">
+                    <input type="submit" value="Pinjam Buku" class="btn red accent-1 right waves-effect waves-light">
+                  </form>
               </div>
             </div>
         </div>
