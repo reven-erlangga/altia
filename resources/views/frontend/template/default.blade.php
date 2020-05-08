@@ -11,6 +11,7 @@
         @yield('content')
     </div>
     @include('frontend.template.partials.script')
+    @include('frontend.template.partials.toast')
 </body>
 
 </html>

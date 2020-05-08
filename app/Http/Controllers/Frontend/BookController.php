@@ -30,6 +30,6 @@ class BookController extends Controller
 
         $user->borrow()->attach($book);
 
-        return redirect()->back();
+        return redirect()->back()->with('toast', 'Berhasil meminjam buku');
     }
 }
