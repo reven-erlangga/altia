@@ -1,13 +1,12 @@
-@extends('layouts.app')
+@extends('frontend.template.default')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
+    <div class="col s12 m7">
+        <h4 class="header">Congratulations</h4>
+        <div class="card horizontal">
+            <div class="card-stacked hoverable">
+                <div class="card-content">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
