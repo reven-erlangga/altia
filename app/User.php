@@ -39,6 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function borrow() {
-        return $this->belongsToMany(Book::class, 'borrow_history');
+        return $this->belongsToMany(Book::class, 'borrow_history')
+            ->withTimestamps();
     }
 }
